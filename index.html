@@ -22,9 +22,9 @@
     <br>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/cNLwA-ak5nI" frameborder="0" allowfullscreen></iframe>
     
-    <iframe width="560" height="315" src=VideoID frameborder="0" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/flL5b1NaSPE" frameborder="0" allowfullscreen></iframe>
     <br>
-    <h2> Game test (from http://codepen.io/luismsf/pen/gEKku) </h2>
+    <h2> Insert game here </h2>
 
   <script>
     // Create the canvas
@@ -78,7 +78,7 @@ addEventListener("keyup", function (e) {
 
 // Reset the game when the player catches a monster
 var reset = function () {
-	hero.x = canvas.width / 2;
+  hero.x = canvas.width / 2;
 	hero.y = canvas.height / 2;
 
 	// Throw the monster somewhere on the screen randomly
@@ -109,7 +109,9 @@ var update = function (modifier) {
 		&& monster.y <= (hero.y + 32)
 	) {
 		++monstersCaught;
-		reset();
+    monster.x = 32 + (Math.random() * (canvas.width - 64));
+	  monster.y = 32 + (Math.random() * (canvas.height - 64));
+    /*reset();*/
 	}
 };
 
