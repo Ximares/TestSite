@@ -1,24 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    
     <meta charset="utf-8">
     <title>Title</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
     
+    <!--Autoplays Biggie Small's Hypnotize
     <iframe width="1" height="1" wmode="transparent" src="//www.youtube.com/embed/L4OSayGiPdI?autoplay=1&loop=1" frameborder="0" allowfullscreen>
     </iframe>
+    -->
     
-    <audio controls>
-      <source src="/audio/ximares_ost_gag.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-    </audio>
-
-    
+    <p id="demo"></p>
+  
   </head>
-  <body>
-    <!-- page content -->
-    >:3
-  </body>
-</html>
+  
+  
+  <body style="background-color:#c64141; text-align:center">
+  Unicode
+    <br>
+    <input type="text" size="40" onkeypress="myFunction(event)">
+    <br>
+    <input type="text" size="2" onkeypress="myFunction(event)">
+  <script>
+    /* From WW3: In this example, we use a cross-browser solution, because the keyCode property does not work on the onkeypress event in Firefox. However, the which property does.
 
+Explanation of the first line in the function below: if the browser supports event.which, then use event.which, otherwise use event.keyCode */
+
+    function myFunction(event) {
+    var x = event.which || event.keyCode;
+      if x != 119 {
+      alert("x");
+      } else {
+      document.getElementById("demo").innerHTML = "The Unicode value is: " + x;
+      }
+    }
+    
+</script>
+    
+  </body>
+  
+</html>
