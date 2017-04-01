@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    
     <meta charset="utf-8">
     <title>Title</title>
     <link rel="stylesheet" href="style.css">
@@ -11,9 +10,9 @@
     <iframe width="1" height="1" wmode="transparent" src="//www.youtube.com/embed/L4OSayGiPdI?autoplay=1&loop=1" frameborder="0" allowfullscreen>
     </iframe>
     -->
-    
+
+ 
     <p id="demo"></p>
-  
   </head>
   
   
@@ -23,23 +22,12 @@
     
     <input type="text" size="40" onkeypress="myFunction(event)">
     <br>
-    <input type="text" size="2" onkeypress="myFunction(event)">
+    <br>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/cNLwA-ak5nI?autoplay=1" frameborder="0" allowfullscreen></iframe>
+
   <script>
-    /* From WW3: In this example, we use a cross-browser solution, because the keyCode property does not work on the onkeypress event in Firefox. However, the which property does.
-
-Explanation of the first line in the function below: if the browser supports event.which, then use event.which, otherwise use event.keyCode */
-
-    function myFunction(event) {
-    var x = event.which || event.keyCode;
-      if x != 119 {
-      alert("x");
-      } else {
-      document.getElementById("demo").innerHTML = "The Unicode value is: " + x;
-      }
-    }
     
-</script>
-    
+  </script>
   </body>
   
 </html>
