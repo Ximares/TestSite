@@ -41,7 +41,13 @@
     
     
     
-  <script> 
+  <script>
+	  
+function preventBehavior(e) {
+  e.preventDefault(); 
+};
+document.addEventListener("touchmove", preventBehavior, false);
+	  
 var audiotest = document.getElementById("myAudio"); 
 function playAudio() { 
     audiotest.play(); 
