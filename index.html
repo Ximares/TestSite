@@ -117,7 +117,10 @@ var bgImage = new Image();
 bgImage.onload = function () {
 	bgReady = true;
 };
+    
 bgImage.src = "https://github.com/Ximares/ximares.github.io/raw/master/visual/playground.png";
+    
+
 
 // Hero image
 var heroReady = false;
@@ -234,6 +237,27 @@ var render = function () {
     pauseSong3();
     playSong4();
   }
+  
+      if(monstersCaught >= 1){
+     bgImage.src = "https://github.com/Ximares/ximares.github.io/raw/master/visual/playground_yellow.png"; 
+    }
+  
+       if(monstersCaught >= 20){
+     bgImage.src = "https://github.com/Ximares/ximares.github.io/raw/master/visual/playground_green.png"; 
+    }
+  
+         if(monstersCaught >= 50){
+     bgImage.src = "https://github.com/Ximares/ximares.github.io/raw/master/visual/playground_orange.png"; 
+    }
+  
+          if(monstersCaught >= 100){
+     bgImage.src = "https://github.com/Ximares/ximares.github.io/raw/master/visual/playground_red.png"; 
+    }
+  
+            if(monstersCaught >= 200){
+     bgImage.src = "https://github.com/Ximares/ximares.github.io/raw/master/visual/playground_secret.png"; 
+    }
+  
 };
 
 // The main game loop
