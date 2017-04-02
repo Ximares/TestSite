@@ -33,10 +33,34 @@
     <div id="ypos">
       This text must change
     </div>
+    <br>
+    
+<audio id="myAudio">
+  <source src="https://github.com/Ximares/ximares.github.io/raw/master/audio/ximares_ost_game.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
+<audio id="coinsound">
+  <source src="https://github.com/Ximares/ximares.github.io/raw/master/audio/ximares_sfx_coin2.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
     
     
   <script> 
-
+var audiotest = document.getElementById("myAudio"); 
+function playAudio() { 
+    audiotest.play(); 
+} 
+function pauseAudio() { 
+    audiotest.pause(); 
+} 
+    
+playAudio();
+    
+var soundtest = document.getElementById("coinsound");
+    function coinSound() {
+      soundtest.play();
+    }
 
 // Create the canvas
 var canvas = document.createElement("canvas");
@@ -71,7 +95,7 @@ monsterImage.src = "https://github.com/Ximares/ximares.github.io/raw/master/visu
 
 // Game objects
 var hero = {
-	speed: 300 // movement in pixels per second
+	speed: 150 // movement in pixels per second
 };
 var monster = {};
 var monstersCaught = 0;
@@ -129,6 +153,8 @@ var update = function (modifier) {
 		&& monster.y <= (hero.y + 32)
 	) {
 		++monstersCaught;
+    //PLAY COIN SOUND
+    coinSound();
     monster.x = 0 + (Math.random() * (canvas.width - 60));
 	  monster.y = 0 + (Math.random() * (canvas.height - 60));
 	}
