@@ -93,12 +93,11 @@ function pauseSong3() {
 function playSong4() { 
     song4.play(); 
 } 
-function pauseSong3() { 
+function pauseSong4() { 
     song4.pause(); 
 } 
     
-    
-playSong1();
+
     
 var soundtest = document.getElementById("coinsound");
     function coinSound() {
@@ -138,7 +137,7 @@ monsterImage.src = "https://github.com/Ximares/ximares.github.io/raw/master/visu
 
 // Game objects
 var hero = {
-	speed: 200 // movement in pixels per second
+	speed: 500 // movement in pixels per second
 };
 var monster = {};
 var monstersCaught = 0;
@@ -216,19 +215,22 @@ var render = function () {
 	ctx.textAlign = "left";
 	ctx.textBaseline = "top";
 	ctx.fillText("Collected: " + monstersCaught, 32, 32);
-  if (monstersCaught >= 10 && monstersCaught <25) {
-    ctx.fillText("10 coins good job!", 32, 64);
+  if (monstersCaught == 1) {
+    playSong1();
+  }
+  if (monstersCaught == 20) {
+    ctx.fillText("20 coins good job!", 32, 64);
     pauseSong1();
     playSong2();
   }
-  if (monstersCaught >= 25 && monstersCaught < 50) {
-    ctx.fillText("25 coins good good! >:3/", 32, 96);
+  if (monstersCaught == 50) {
+    ctx.fillText("50 coins good good! >:3/", 32, 64);
     pauseSong2();
     playSong3();
   }
 
-  if (monstersCaught >= 50) {
-    ctx.fillText("50 coins!! you finished :D", 32, 128);
+  if (monstersCaught >= 100) {
+    ctx.fillText("100 coins!! you finished :D", 32, 64);
     pauseSong3();
     playSong4();
   }
