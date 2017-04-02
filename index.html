@@ -24,10 +24,21 @@
     
     <iframe width="560" height="315" src="https://www.youtube.com/embed/flL5b1NaSPE" frameborder="0" allowfullscreen></iframe>
     <br>
-    <h2> Game test (Modified from <href>http://www.lostdecadegames.com/how-to-make-a-simple-html5-canvas-game/</href>) </h2>
+    <h2> Insert game here </h2>
 
-  <script>
-    // Create the canvas
+   <div id="xpos">
+    This text will change
+</div>
+    
+    <div id="ypos">
+      This text must change
+    </div>
+    
+    
+  <script> 
+
+
+// Create the canvas
 var canvas = document.createElement("canvas");
 var ctx = canvas.getContext("2d");
 canvas.width = 512;
@@ -40,7 +51,7 @@ var bgImage = new Image();
 bgImage.onload = function () {
 	bgReady = true;
 };
-bgImage.src = "https://raw.github.com/lostdecade/simple_canvas_game/master/images/background.png";
+bgImage.src = "https://github.com/Ximares/ximares.github.io/raw/master/visual/playground.png";
 
 // Hero image
 var heroReady = false;
@@ -48,7 +59,7 @@ var heroImage = new Image();
 heroImage.onload = function () {
 	heroReady = true;
 };
-heroImage.src = "https://raw.github.com/lostdecade/simple_canvas_game/master/images/hero.png";
+heroImage.src = "https://github.com/Ximares/ximares.github.io/raw/master/visual/lenny.png";
 
 // Monster image
 var monsterReady = false;
@@ -56,11 +67,11 @@ var monsterImage = new Image();
 monsterImage.onload = function () {
 	monsterReady = true;
 };
-monsterImage.src = "https://raw.github.com/lostdecade/simple_canvas_game/master/images/monster.png";
+monsterImage.src = "https://github.com/Ximares/ximares.github.io/raw/master/visual/coin.png";
 
 // Game objects
 var hero = {
-	speed: 256 // movement in pixels per second
+	speed: 300 // movement in pixels per second
 };
 var monster = {};
 var monstersCaught = 0;
@@ -75,6 +86,7 @@ addEventListener("keydown", function (e) {
 addEventListener("keyup", function (e) {
 	delete keysDown[e.keyCode];
 }, false);
+    
 
 // Reset the game when the player catches a monster
 var reset = function () {
@@ -85,6 +97,14 @@ var reset = function () {
 	monster.x = 32 + (Math.random() * (canvas.width - 64));
 	monster.y = 32 + (Math.random() * (canvas.height - 64));
 };
+    
+//Maintain character within border
+    if (hero.x > 150) {
+      hero.x = canvas.width / 2;
+    }
+    if (hero.y > 150) {
+      hero.y = canvas.width / 2;
+    }
 
 // Update game objects
 var update = function (modifier) {
@@ -109,9 +129,8 @@ var update = function (modifier) {
 		&& monster.y <= (hero.y + 32)
 	) {
 		++monstersCaught;
-    monster.x = 32 + (Math.random() * (canvas.width - 64));
-	  monster.y = 32 + (Math.random() * (canvas.height - 64));
-    /*reset();*/
+    monster.x = 120 + (Math.random() * (canvas.width - 60));
+	  monster.y = 120 + (Math.random() * (canvas.height - 60));
 	}
 };
 
@@ -130,11 +149,11 @@ var render = function () {
 	}
 
 	// Score
-	ctx.fillStyle = "rgb(250, 250, 250)";
+	ctx.fillStyle = "rgb(0, 0, 256)";
 	ctx.font = "24px Helvetica";
 	ctx.textAlign = "left";
 	ctx.textBaseline = "top";
-	ctx.fillText("Goblins caught: " + monstersCaught, 32, 32);
+	ctx.fillText("Collected: " + monstersCaught, 32, 32);
 };
 
 // The main game loop
@@ -143,15 +162,35 @@ var main = function () {
 	var delta = now - then;
 
 	update(delta / 1000);
+  if (hero.x < 5) {
+    hero.x = 10;
+  }
+  if (hero.x > 473) {
+    hero.x = 468;
+  }
+  if (hero.y < 0) {
+    hero.y = 5;
+  }
+  if (hero.y > 500) {
+    hero.y = 495;
+  }
+  document.getElementById("xpos").innerHTML = "x-position = " + hero.x;
+  document.getElementById("ypos").innerHTML = "y-position = " + hero.y;
 	render();
 
 	then = now;
 };
+    
+
 
 // Let's play this game!
 reset();
 var then = Date.now();
 setInterval(main, 1); // Execute as fast as possible
+    
+    
+    
+    
   </script>
     
   </body>
