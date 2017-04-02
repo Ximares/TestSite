@@ -16,7 +16,7 @@
   <body style="background-color:#c64141; text-align:center">
     <h1>Ximares Testing Site</h1>
     <p>Heavily under construction =v=)/</p>
-	  <p>Ver0.1</p>
+	  <p>Ver 0.1, last updated 2th April 2017</p>
     
     <h2> Insert game here </h2>
 
@@ -42,11 +42,14 @@
     
     
   <script>
-	  
-function preventBehavior(e) {
-  e.preventDefault(); 
-};
-document.addEventListener("touchmove", preventBehavior, false);
+    //Disable scrolling with arrowkeys
+    window.addEventListener("keydown", function(e) {
+    // space and arrow keys
+    if([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
+        e.preventDefault();
+    }
+}, false);
+
 	  
 var audiotest = document.getElementById("myAudio"); 
 function playAudio() { 
@@ -123,13 +126,6 @@ var reset = function () {
 	monster.y = 0 + (Math.random() * (canvas.height - 120));
 };
     
-//Maintain character within border
-    if (hero.x > 150) {
-      hero.x = canvas.width / 2;
-    }
-    if (hero.y > 150) {
-      hero.y = canvas.width / 2;
-    }
 
 // Update game objects
 var update = function (modifier) {
@@ -201,8 +197,8 @@ var main = function () {
   if (hero.y > 445) {
     hero.y = 440;
   }
-  document.getElementById("xpos").innerHTML = "x-position = " + hero.x;
-  document.getElementById("ypos").innerHTML = "y-position = " + hero.y;
+  document.getElementById("xpos").innerHTML = "x-pos = " + hero.x;
+  document.getElementById("ypos").innerHTML = "y-pos = " + hero.y;
 	render();
 
 	then = now;
