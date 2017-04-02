@@ -173,10 +173,24 @@ var render = function () {
 
 	// Score
 	ctx.fillStyle = "rgb(0, 0, 256)";
-	ctx.font = "24px Helvetica";
+	ctx.font = "20px Helvetica";
 	ctx.textAlign = "left";
 	ctx.textBaseline = "top";
 	ctx.fillText("Collected: " + monstersCaught, 32, 32);
+  if (monstersCaught >= 5) {
+    ctx.fillText("5 coins good job!", 32, 64);
+  }
+  if (monstersCaught >= 10) {
+    ctx.fillText("10 coins good good! :D", 32, 96);
+  }
+
+  if (monstersCaught >= 20) {
+    ctx.fillText("20 coins!!", 32, 128);
+  }
+
+  if (monstersCaught >= 30) {
+    ctx.fillText("Thirtyyy xD", 32, 160);
+  }
 };
 
 // The main game loop
