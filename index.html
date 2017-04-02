@@ -29,8 +29,23 @@
     </div>
     <br>
     
-<audio id="myAudio">
+<audio id="song1">
   <source src="https://github.com/Ximares/ximares.github.io/raw/master/audio/ximares_ost_game.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+    
+    <audio id="song2">
+  <source src="https://github.com/Ximares/ximares.github.io/raw/master/audio/ximares_ost_game2.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+    
+    <audio id="song3">
+  <source src="https://github.com/Ximares/ximares.github.io/raw/master/audio/ximares_ost_game3.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+    
+    <audio id="song4">
+  <source src="https://github.com/Ximares/ximares.github.io/raw/master/audio/ximares_ost_game4.mp3" type="audio/mpeg">
   Your browser does not support the audio element.
 </audio>
 
@@ -51,15 +66,39 @@
 }, false);
 
 	  
-var audiotest = document.getElementById("myAudio"); 
-function playAudio() { 
-    audiotest.play(); 
+var song1 = document.getElementById("song1"); 
+function playSong1() { 
+    song1.play(); 
 } 
-function pauseAudio() { 
-    audiotest.pause(); 
+function pauseSong1() { 
+    song1.pause(); 
 } 
     
-playAudio();
+    var song2 = document.getElementById("song2"); 
+function playSong2() { 
+    song2.play(); 
+} 
+function pauseSong2() { 
+    song2.pause(); 
+} 
+    
+    var song3 = document.getElementById("song3"); 
+function playSong3() { 
+    song3.play(); 
+} 
+function pauseSong3() { 
+    song3.pause(); 
+} 
+    var song4 = document.getElementById("song4"); 
+function playSong4() { 
+    song4.play(); 
+} 
+function pauseSong3() { 
+    song4.pause(); 
+} 
+    
+    
+playSong1();
     
 var soundtest = document.getElementById("coinsound");
     function coinSound() {
@@ -99,7 +138,7 @@ monsterImage.src = "https://github.com/Ximares/ximares.github.io/raw/master/visu
 
 // Game objects
 var hero = {
-	speed: 150 // movement in pixels per second
+	speed: 200 // movement in pixels per second
 };
 var monster = {};
 var monstersCaught = 0;
@@ -177,19 +216,21 @@ var render = function () {
 	ctx.textAlign = "left";
 	ctx.textBaseline = "top";
 	ctx.fillText("Collected: " + monstersCaught, 32, 32);
-  if (monstersCaught >= 5) {
-    ctx.fillText("5 coins good job!", 32, 64);
+  if (monstersCaught >= 10 && monstersCaught <25) {
+    ctx.fillText("10 coins good job!", 32, 64);
+    pauseSong1();
+    playSong2();
   }
-  if (monstersCaught >= 10) {
-    ctx.fillText("10 coins good good! :D", 32, 96);
+  if (monstersCaught >= 25 && monstersCaught < 50) {
+    ctx.fillText("25 coins good good! >:3/", 32, 96);
+    pauseSong2();
+    playSong3();
   }
 
-  if (monstersCaught >= 20) {
-    ctx.fillText("20 coins!!", 32, 128);
-  }
-
-  if (monstersCaught >= 30) {
-    ctx.fillText("Thirtyyy xD", 32, 160);
+  if (monstersCaught >= 50) {
+    ctx.fillText("50 coins!! you finished :D", 32, 128);
+    pauseSong3();
+    playSong4();
   }
 };
 
