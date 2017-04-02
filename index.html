@@ -21,11 +21,11 @@
     <h2> ~ Coin Collect Game ~ </h2>
     <h3> Move around with wasd or arrowkeys :D </h3>
    <div id="xpos">
-    This text will change
+     x-pos: 
 </div>
     
     <div id="ypos">
-      This text must change
+      y-pos: 
     </div>
     <br>
     
@@ -54,8 +54,19 @@
   Your browser does not support the audio element.
 </audio>
     
+
     
+    background2.src = "https://github.com/Ximares/ximares.github.io/raw/master/visual/playground_green.png" 
     
+        background3.src = "https://github.com/Ximares/ximares.github.io/raw/master/visual/playground_yellow.png" 
+    
+        background4.src = "https://github.com/Ximares/ximares.github.io/raw/master/visual/playground_orange.png" 
+    
+            background5.src = "https://github.com/Ximares/ximares.github.io/raw/master/visual/playground_red.png" 
+    
+           background6.src = "https://github.com/Ximares/ximares.github.io/raw/master/visual/playground_secret.png" 
+    
+
   <script>
     //Disable scrolling with arrowkeys
     window.addEventListener("keydown", function(e) {
@@ -64,8 +75,31 @@
         e.preventDefault();
     }
 }, false);
+    
+    
+//BACKGROUNDLIST
+var imgArray = new Array();
 
-	  
+imgArray[0] = new Image();
+imgArray[0].src = 'https://github.com/Ximares/ximares.github.io/raw/master/visual/playground.png';
+
+imgArray[1] = new Image();
+imgArray[1].src = 'https://github.com/Ximares/ximares.github.io/raw/master/visual/playground_green.png';
+    
+    imgArray[2] = new Image();
+imgArray[2].src = 'https://github.com/Ximares/ximares.github.io/raw/master/visual/playground_yellow.png';
+    
+    imgArray[3] = new Image();
+imgArray[3].src = 'https://github.com/Ximares/ximares.github.io/raw/master/visual/playground_orange.png';
+    
+    imgArray[4] = new Image();
+imgArray[4].src = 'https://github.com/Ximares/ximares.github.io/raw/master/visual/playground_red.png';
+    
+    imgArray[5] = new Image();
+imgArray[5].src = 'https://github.com/Ximares/ximares.github.io/raw/master/visual/playground_secret.png';
+
+    
+//SONGLIST
 var song1 = document.getElementById("song1"); 
 function playSong1() { 
     song1.play(); 
@@ -239,23 +273,23 @@ var render = function () {
   }
   
       if(monstersCaught >= 1){
-     bgImage.src = "https://github.com/Ximares/ximares.github.io/raw/master/visual/playground_yellow.png"; 
+      bgImage = imgArray[1];
     }
   
        if(monstersCaught >= 20){
-     bgImage.src = "https://github.com/Ximares/ximares.github.io/raw/master/visual/playground_green.png"; 
+     bgImage = imgArray[2]; 
     }
   
          if(monstersCaught >= 50){
-     bgImage.src = "https://github.com/Ximares/ximares.github.io/raw/master/visual/playground_orange.png"; 
+     bgImage = imgArray[3];
     }
   
           if(monstersCaught >= 100){
-     bgImage.src = "https://github.com/Ximares/ximares.github.io/raw/master/visual/playground_red.png"; 
+     bgImage = imgArray[4]; 
     }
   
             if(monstersCaught >= 200){
-     bgImage.src = "https://github.com/Ximares/ximares.github.io/raw/master/visual/playground_secret.png"; 
+     bgImage = imgArray[5]; 
     }
   
 };
