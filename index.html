@@ -19,7 +19,7 @@
 	  <p>Ver 0.2, last updated 2th April 2017</p>
     
     <h2> ~ Coin Collect Game ~ </h2>
-
+    <h3> Move around with wasd or arrowkeys :D </h3>
    <div id="xpos">
     This text will change
 </div>
@@ -140,7 +140,7 @@ monsterImage.src = "https://github.com/Ximares/ximares.github.io/raw/master/visu
 
 // Game objects
 var hero = {
-	speed: 500 // movement in pixels per second
+	speed: 200 // movement in pixels per second
 };
 var monster = {};
 var monstersCaught = 0;
@@ -170,16 +170,16 @@ var reset = function () {
 
 // Update game objects
 var update = function (modifier) {
-	if (38 in keysDown) { // Player holding up
+	if (38 in keysDown || 87 in keysDown) { // Player holding up
 		hero.y -= hero.speed * modifier;
 	}
-	if (40 in keysDown) { // Player holding down
+	if (40 in keysDown || 83 in keysDown) { // Player holding down
 		hero.y += hero.speed * modifier;
 	}
-	if (37 in keysDown) { // Player holding left
+	if (37 in keysDown || 65 in keysDown) { // Player holding left
 		hero.x -= hero.speed * modifier;
 	}
-	if (39 in keysDown) { // Player holding right
+	if (39 in keysDown || 68 in keysDown) { // Player holding right
 		hero.x += hero.speed * modifier;
 	}
 
