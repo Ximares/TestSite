@@ -191,8 +191,8 @@ canvas.addEventListener('touchmove', function(event) {
     canvas.style.top = touch.pageY + 'px';
     document.getElementById("xtouchpos").innerHTML = "xtouch-pos = " + touch.pageX;
     document.getElementById("ytouchpos").innerHTML = "ytouch-pos = " + touch.pageY;
-    chara.x = touch.pageX - 15;
-    chara.y = touch.pageY -300;
+    chara.x = touch.pageX;
+    chara.y = touch.pageY -200;
   }
 }, false);
   
