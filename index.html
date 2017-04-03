@@ -12,11 +12,9 @@
   
   <body style="background-color:#c64141; text-align:center">
     <h1>Ximares Testing Site</h1>
-    <p>Heavily under construction =v=)/</p>
-	  <p>Ver 0.6, last updated 3rd April 2017</p>
+	  <p>Ver 0.7, last updated 3rd April 2017</p>
     <h2> ~ Coin Collect Game ~ </h2>
-    <h3> Move around with wasd or arrowkeys :D </h3>
-    <h4> Currently working on trying to make it compatible for mobile </h4>
+    <h3> Arrowkeys, WASD, or touch for moving character </h3>
     
     <div id="xpos">
     x-pos: 
@@ -38,9 +36,8 @@
     
     
     <div id="touch">
+      Pray that this may work
 </div>
-    
-    <br>
     
     <div id="xtouchpos">
     xtouch-pos: 
@@ -50,7 +47,7 @@
     ytouch-pos: 
     </div>
     
-    <br>   
+
     
  
 
@@ -81,37 +78,38 @@
 </audio>
 
     
+    
+    
 
 <script>
-    //Disable scrolling with arrowkeys
+//Disable scrolling with arrowkeys
     window.addEventListener("keydown", function(e) {
-    // space and arrow keys
+    //space and arrow keys
     if([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
         e.preventDefault();
     }
 }, false);
-  
-
-  
-    
+ 
     
 //BACKGROUNDLIST
 var imgArray = new Array();
+  
 imgArray[0] = new Image();
 imgArray[0].src = 'https://github.com/Ximares/ximares.github.io/raw/master/visual/playground.png';
+  
 imgArray[1] = new Image();
 imgArray[1].src = 'https://github.com/Ximares/ximares.github.io/raw/master/visual/playground_green.png';
     
-    imgArray[2] = new Image();
+imgArray[2] = new Image();
 imgArray[2].src = 'https://github.com/Ximares/ximares.github.io/raw/master/visual/playground_yellow.png';
     
-    imgArray[3] = new Image();
+imgArray[3] = new Image();
 imgArray[3].src = 'https://github.com/Ximares/ximares.github.io/raw/master/visual/playground_orange.png';
     
-    imgArray[4] = new Image();
+imgArray[4] = new Image();
 imgArray[4].src = 'https://github.com/Ximares/ximares.github.io/raw/master/visual/playground_red.png';
     
-    imgArray[5] = new Image();
+imgArray[5] = new Image();
 imgArray[5].src = 'https://github.com/Ximares/ximares.github.io/raw/master/visual/playground_secret.png';
     
 //SONGLIST
@@ -160,6 +158,7 @@ var ctx = canvas.getContext("2d");
 canvas.width = 512;
 canvas.height = 480;
 document.body.appendChild(canvas);
+  
 // Background image
 var bgReady = false;
 var bgImage = new Image();
@@ -167,10 +166,11 @@ bgImage.onload = function () {
 	bgReady = true;
 };
     
-  //EXPERIMENTAL ANTI-SCROLL    
+  
+//EXPERIMENTAL ANTI-SCROLL    
 document.addEventListener('touchstart', this.touchstart);
 document.addEventListener('touchmove', this.touchmove);
-  
+   
   function touchstart(e) {
     e.preventDefault()
 } 
@@ -178,7 +178,7 @@ document.addEventListener('touchmove', this.touchmove);
     function touchstart(e) {
     e.preventDefault()
 }
-  
+
   
 //INITIALIZING TOUCH
 var obj = document.getElementById('touch');
@@ -191,8 +191,8 @@ canvas.addEventListener('touchmove', function(event) {
     canvas.style.top = touch.pageY + 'px';
     document.getElementById("xtouchpos").innerHTML = "xtouch-pos = " + touch.pageX;
     document.getElementById("ytouchpos").innerHTML = "ytouch-pos = " + touch.pageY;
-    chara.x = touch.pageX;
-    chara.y = touch.pageY -550;
+    chara.x = touch.pageX - 15;
+    chara.y = touch.pageY -300;
   }
 }, false);
   
@@ -206,6 +206,7 @@ charaImage.onload = function () {
 };
 	
 charaImage.src = "https://github.com/Ximares/ximares.github.io/raw/master/visual/lenny.png";
+  
 // coin image
 var coinReady = false;
 var coinImage = new Image();
@@ -214,10 +215,12 @@ coinImage.onload = function () {
 };
 	
 coinImage.src = "https://github.com/Ximares/ximares.github.io/raw/master/visual/coin.png";
+  
 // Game objects
 var chara = {
-	speed: 200 // movement in pixels per second
+	speed: 300 // movement in pixels per second
 };
+  
 var coin = {};
 var coinsCaught = 0;
   
@@ -356,7 +359,7 @@ var main = function () {
   document.getElementById("ypos").innerHTML = "y-pos = " + chara.y;
   //document.getElementById("xtouchpos").innerHTML = "xtouch-pos = " + chara.x;
   //document.getElementById("ytouchpos").innerHTML = "ytouch-pos = " + chara.y;
-  obj.addEventListener();
+  //obj.addEventListener();
 	then = now;
 };
     
@@ -365,10 +368,7 @@ reset();
 var then = Date.now();
 setInterval(main, 1); // Execute as fast as possible
   </script> 
-    <br>
-    <br>  
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/flL5b1NaSPE" frameborder="0" allowfullscreen></iframe>
-    <br>
+    
   </body>
   
 </html>
