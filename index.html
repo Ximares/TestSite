@@ -13,7 +13,7 @@
   <body style="background-color:#c64141; text-align:center">
     <h1>Ximares Testing Site</h1>
     <p>Heavily under construction =v=)/</p>
-	  <p>Ver 0.5, last updated 3rd April 2017</p>
+	  <p>Ver 0.6, last updated 3rd April 2017</p>
     <h2> ~ Coin Collect Game ~ </h2>
     <h3> Move around with wasd or arrowkeys :D </h3>
     <h4> Currently working on trying to make it compatible for mobile </h4>
@@ -38,12 +38,6 @@
     
     
     <div id="touch">
-      <br>
-      <br>
-Some kind of transparent button for moving would be nice and something to stop the automatic scrolling
-      <br>
-Touchpad
-<br> <br> <br>
 </div>
     
     <br>
@@ -173,9 +167,19 @@ bgImage.onload = function () {
 	bgReady = true;
 };
     
+  //EXPERIMENTAL ANTI-SCROLL    
+document.addEventListener('touchstart', this.touchstart);
+document.addEventListener('touchmove', this.touchmove);
   
-    
-
+  function touchstart(e) {
+    e.preventDefault()
+} 
+  
+    function touchstart(e) {
+    e.preventDefault()
+}
+  
+  
 //INITIALIZING TOUCH
 var obj = document.getElementById('touch');
 canvas.addEventListener('touchmove', function(event) {
@@ -187,7 +191,7 @@ canvas.addEventListener('touchmove', function(event) {
     canvas.style.top = touch.pageY + 'px';
     document.getElementById("xtouchpos").innerHTML = "xtouch-pos = " + touch.pageX;
     document.getElementById("ytouchpos").innerHTML = "ytouch-pos = " + touch.pageY;
-    chara.x = touch.pageX - 15;
+    chara.x = touch.pageX;
     chara.y = touch.pageY -550;
   }
 }, false);
@@ -216,6 +220,7 @@ var chara = {
 };
 var coin = {};
 var coinsCaught = 0;
+  
 // Handle keyboard controls
 var keysDown = {};
 addEventListener("keydown", function (e) {
