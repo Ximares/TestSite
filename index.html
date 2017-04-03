@@ -13,7 +13,7 @@
   <body style="background-color:#c64141; text-align:center">
     <h1>Ximares Testing Site</h1>
     <p>Heavily under construction =v=)/</p>
-	  <p>Ver 0.4, last updated 3rd April 2017</p>
+	  <p>Ver 0.49, last updated 3rd April 2017</p>
     <h2> ~ Coin Collect Game ~ </h2>
     <h3> Move around with wasd or arrowkeys :D </h3>
     <h4> Currently working on trying to make it compatible for mobile </h4>
@@ -36,11 +36,15 @@
   ontouchforcechange="touchForceChange(event);"
 ></div>
     
-    <div id="touch">
-  <canvas></canvas>
-  <div id="overlay">TOUCHPAD (TESTING PHASE)</div>
-</div>
     
+    <div id="touch">
+      <br>
+      <br>
+      <img src='https://github.com/Ximares/ximares.github.io/raw/master/visual/playground.png'>
+      <br>
+Touchpad
+<br> <br> <br>
+</div>
     
     <br>
     
@@ -122,7 +126,7 @@ obj.addEventListener('touchmove', function(event) {
     document.getElementById("xtouchpos").innerHTML = "xtouch-pos = " + touch.pageX;
     document.getElementById("ytouchpos").innerHTML = "ytouch-pos = " + touch.pageY;
     chara.x = touch.pageX;
-    chara.y = touch.pageY;
+    chara.y = touch.pageY - 350;
   }
 }, false);
   
