@@ -1,0 +1,9 @@
+#touch {
+  position: relative;
+}
+#touch canvas, #overlay {
+  position: relative;
+}
+canvas {
+  border: 10px solid black;
+}
