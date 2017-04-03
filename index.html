@@ -13,7 +13,7 @@
   <body style="background-color:#c64141; text-align:center">
     <h1>Ximares Testing Site</h1>
     <p>Heavily under construction =v=)/</p>
-	  <p>Ver 0.3, last updated 2th April 2017</p>
+	  <p>Ver 0.4, last updated 3th April 2017</p>
     
     <h2> ~ Coin Collect Game ~ </h2>
     <h3> Move around with wasd or arrowkeys :D </h3>
@@ -142,28 +142,28 @@ bgImage.src = "https://github.com/Ximares/ximares.github.io/raw/master/visual/pl
     
 
 
-// Hero image
-var heroReady = false;
-var heroImage = new Image();
-heroImage.onload = function () {
-	heroReady = true;
+// chara image
+var charaReady = false;
+var charaImage = new Image();
+charaImage.onload = function () {
+	charaReady = true;
 };
-heroImage.src = "https://github.com/Ximares/ximares.github.io/raw/master/visual/lenny.png";
+charaImage.src = "https://github.com/Ximares/ximares.github.io/raw/master/visual/lenny.png";
 
-// Monster image
-var monsterReady = false;
-var monsterImage = new Image();
-monsterImage.onload = function () {
-	monsterReady = true;
+// coin image
+var coinReady = false;
+var coinImage = new Image();
+coinImage.onload = function () {
+	coinReady = true;
 };
-monsterImage.src = "https://github.com/Ximares/ximares.github.io/raw/master/visual/coin.png";
+coinImage.src = "https://github.com/Ximares/ximares.github.io/raw/master/visual/coin.png";
 
 // Game objects
-var hero = {
+var chara = {
 	speed: 200 // movement in pixels per second
 };
-var monster = {};
-var monstersCaught = 0;
+var coin = {};
+var coinsCaught = 0;
 
 // Handle keyboard controls
 var keysDown = {};
@@ -177,44 +177,44 @@ addEventListener("keyup", function (e) {
 }, false);
     
 
-// Reset the game when the player catches a monster
+// Reset the game when the player catches a coin
 var reset = function () {
-  hero.x = canvas.width / 2;
-	hero.y = canvas.height / 2;
+  chara.x = canvas.width / 2;
+	chara.y = canvas.height / 2;
 
-	// Throw the monster somewhere on the screen randomly
-	monster.x = 0 + (Math.random() * (canvas.width - 120));
-	monster.y = 0 + (Math.random() * (canvas.height - 120));
+	// Throw the coin somewhere on the screen randomly
+	coin.x = 0 + (Math.random() * (canvas.width - 120));
+	coin.y = 0 + (Math.random() * (canvas.height - 120));
 };
     
 
 // Update game objects
 var update = function (modifier) {
 	if (38 in keysDown || 87 in keysDown) { // Player holding up
-		hero.y -= hero.speed * modifier;
+		chara.y -= chara.speed * modifier;
 	}
 	if (40 in keysDown || 83 in keysDown) { // Player holding down
-		hero.y += hero.speed * modifier;
+		chara.y += chara.speed * modifier;
 	}
 	if (37 in keysDown || 65 in keysDown) { // Player holding left
-		hero.x -= hero.speed * modifier;
+		chara.x -= chara.speed * modifier;
 	}
 	if (39 in keysDown || 68 in keysDown) { // Player holding right
-		hero.x += hero.speed * modifier;
+		chara.x += chara.speed * modifier;
 	}
 
 	// Are they touching?
 	if (
-		hero.x <= (monster.x + 32)
-		&& monster.x <= (hero.x + 32)
-		&& hero.y <= (monster.y + 32)
-		&& monster.y <= (hero.y + 32)
+		chara.x <= (coin.x + 32)
+		&& coin.x <= (chara.x + 32)
+		&& chara.y <= (coin.y + 32)
+		&& coin.y <= (chara.y + 32)
 	) {
-		++monstersCaught;
+		++coinsCaught;
     //PLAY COIN SOUND
     coinSound();
-    monster.x = 0 + (Math.random() * (canvas.width - 60));
-	  monster.y = 0 + (Math.random() * (canvas.height - 60));
+    coin.x = 0 + (Math.random() * (canvas.width - 60));
+	  coin.y = 0 + (Math.random() * (canvas.height - 60));
 	}
 };
 
@@ -224,12 +224,12 @@ var render = function () {
 		ctx.drawImage(bgImage, 0, 0);
 	}
 
-	if (heroReady) {
-		ctx.drawImage(heroImage, hero.x, hero.y);
+	if (charaReady) {
+		ctx.drawImage(charaImage, chara.x, chara.y);
 	}
 
-	if (monsterReady) {
-		ctx.drawImage(monsterImage, monster.x, monster.y);
+	if (coinReady) {
+		ctx.drawImage(coinImage, coin.x, coin.y);
 	}
 
 	// Score
@@ -237,44 +237,44 @@ var render = function () {
 	ctx.font = "20px Helvetica";
 	ctx.textAlign = "left";
 	ctx.textBaseline = "top";
-	ctx.fillText("Collected: " + monstersCaught, 32, 32);
-  if (monstersCaught == 1) {
+	ctx.fillText("Collected: " + coinsCaught, 32, 32);
+  if (coinsCaught == 1) {
     playSong1();
   }
-  if (monstersCaught == 20) {
+  if (coinsCaught == 20) {
     ctx.fillText("20 coins good job!", 32, 64);
     pauseSong1();
     playSong2();
   }
-  if (monstersCaught == 50) {
+  if (coinsCaught == 50) {
     ctx.fillText("50 coins good good! >:3/", 32, 64);
     pauseSong2();
     playSong3();
   }
 
-  if (monstersCaught >= 100) {
+  if (coinsCaught >= 100) {
     ctx.fillText("100 coins!! you finished :D", 32, 64);
     pauseSong3();
     playSong4();
   }
   
-      if(monstersCaught >= 1){
+      if(coinsCaught >= 1){
       bgImage = imgArray[1];
     }
   
-       if(monstersCaught >= 20){
+       if(coinsCaught >= 20){
      bgImage = imgArray[2]; 
     }
   
-         if(monstersCaught >= 50){
+         if(coinsCaught >= 50){
      bgImage = imgArray[3];
     }
   
-          if(monstersCaught >= 100){
+          if(coinsCaught >= 100){
      bgImage = imgArray[4]; 
     }
   
-            if(monstersCaught >= 200){
+            if(coinsCaught >= 200){
      bgImage = imgArray[5]; 
     }
   
@@ -286,20 +286,20 @@ var main = function () {
 	var delta = now - then;
 
 	update(delta / 1000);
-  if (hero.x < 5) {
-    hero.x = 10;
+  if (chara.x < 5) {
+    chara.x = 10;
   }
-  if (hero.x > 473) {
-    hero.x = 468;
+  if (chara.x > 473) {
+    chara.x = 468;
   }
-  if (hero.y < 0) {
-    hero.y = 5;
+  if (chara.y < 0) {
+    chara.y = 5;
   }
-  if (hero.y > 445) {
-    hero.y = 440;
+  if (chara.y > 445) {
+    chara.y = 440;
   }
-  document.getElementById("xpos").innerHTML = "x-pos = " + hero.x;
-  document.getElementById("ypos").innerHTML = "y-pos = " + hero.y;
+  document.getElementById("xpos").innerHTML = "x-pos = " + chara.x;
+  document.getElementById("ypos").innerHTML = "y-pos = " + chara.y;
 	render();
 
 	then = now;
