@@ -13,20 +13,18 @@
   <body style="background-color:#c64141; text-align:center">
     <h1>Ximares Testing Site</h1>
     <p>Heavily under construction =v=)/</p>
-	  <p>Ver 0.4, last updated 3th April 2017</p>
-    
+	  <p>Ver 0.33, last updated 2th April 2017</p>
     <h2> ~ Coin Collect Game ~ </h2>
     <h3> Move around with wasd or arrowkeys :D </h3>
    <div id="xpos">
      x-pos: 
 </div>
-    
     <div id="ypos">
       y-pos: 
     </div>
     <br>
     
-<audio id="song1">
+    <audio id="song1">
   <source src="https://github.com/Ximares/ximares.github.io/raw/master/audio/ximares_ost_game.mp3" type="audio/mpeg">
   Your browser does not support the audio element.
 </audio>
@@ -60,7 +58,13 @@
     if([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
         e.preventDefault();
     }
+      if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
+        e.preventDefault();
+      }
 }, false);
+  
+  
+
     
     
 //BACKGROUNDLIST
@@ -117,12 +121,16 @@ function pauseSong4() {
     song4.pause(); 
 } 
     
-
     
 var soundtest = document.getElementById("coinsound");
     function coinSound() {
       soundtest.play();
     }
+  
+
+
+  
+  
 
 // Create the canvas
 var canvas = document.createElement("canvas");
@@ -176,6 +184,7 @@ addEventListener("keyup", function (e) {
 	delete keysDown[e.keyCode];
 }, false);
     
+      
 
 // Reset the game when the player catches a coin
 var reset = function () {
