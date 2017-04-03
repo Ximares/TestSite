@@ -192,8 +192,8 @@ canvas.addEventListener('touchmove', function(event) {
     canvas.style.top = touch.pageY + 'px';
     document.getElementById("xtouchpos").innerHTML = "xtouch-pos = " + touch.pageX;
     document.getElementById("ytouchpos").innerHTML = "ytouch-pos = " + touch.pageY;
-    chara.x = touch.pageX - 170;
-    chara.y = touch.pageY -470;
+    chara.x = touch.pageX - 140;
+    chara.y = touch.pageY -420;
   }
 }, false);
   
@@ -369,6 +369,8 @@ reset();
 var then = Date.now();
 setInterval(main, 1); // Execute as fast as possible
   </script> 
+    <br>
+    <br>
     
   </body>
   
