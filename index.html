@@ -13,7 +13,7 @@
   <body style="background-color:#c64141; text-align:center">
     <h1>Ximares Testing Site</h1>
     <p>Heavily under construction =v=)/</p>
-	  <p>Ver 0.3, last updated 3rd April 2017</p>
+	  <p>Ver 0.4, last updated 3rd April 2017</p>
     <h2> ~ Coin Collect Game ~ </h2>
     <h3> Move around with wasd or arrowkeys :D </h3>
     <h4> Currently working on trying to make it compatible for mobile </h4>
@@ -29,7 +29,7 @@
     <br>
     
     <div id="touch">
-    touching?
+    Touching here test
     </div>
     
     <br>
@@ -98,8 +98,7 @@
   
   
  
-  
-  
+//INITIALIZING TOUCH
 function init() {
   // Get a reference to our touch-sensitive element
   var touchzone = document.getElementById("touchzone");
@@ -108,15 +107,27 @@ function init() {
 }
   
   
-  
 function touchHandler(event) {
   // Get a reference to our coordinates div
   var coords = document.getElementById("coords");
   // Write the coordinates of the touch to the div
   coords.innerHTML = 'x: ' + event.touches[0].pageX + ', y: ' + event.touches[0].pageY;
-}
+} 
 
- 
+var obj = document.getElementById('touch');
+obj.addEventListener('touchmove', function(event) {
+  // If there's exactly one finger inside this element
+  if (event.targetTouches.length == 1) {
+    var touch = event.targetTouches[0];
+    // Place element where the finger is
+    obj.style.left = touch.pageX + 'px';
+    obj.style.top = touch.pageY + 'px';
+    document.getElementById("xtouchpos").innerHTML = "xtouch-pos = " + touch.pageX;
+    document.getElementById("ytouchpos").innerHTML = "ytouch-pos = " + touch.pageY;
+    chara.x = touch.pageX;
+    chara.y = touch.pageY;
+  }
+}, false);
   
     
     
@@ -181,8 +192,7 @@ var soundtest = document.getElementById("coinsound");
       soundtest.play();
     }
   
-//INITIALIZING TOUCH
-  //EMPTY
+
   
   
 
@@ -350,6 +360,8 @@ var render = function () {
   
 };
 
+  
+  
 // The main game loop
 var main = function () {
 	var now = Date.now();
@@ -373,19 +385,7 @@ var main = function () {
   document.getElementById("ypos").innerHTML = "y-pos = " + chara.y;
   //document.getElementById("xtouchpos").innerHTML = "xtouch-pos = " + chara.x;
   //document.getElementById("ytouchpos").innerHTML = "ytouch-pos = " + chara.y;
-
-  var obj = document.getElementById('touch');
-obj.addEventListener('touchmove', function(event) {
-  // If there's exactly one finger inside this element
-  if (event.targetTouches.length == 1) {
-    var touch = event.targetTouches[0];
-    // Place element where the finger is
-    obj.style.left = touch.pageX + 'px';
-    obj.style.top = touch.pageY + 'px';
-    document.getElementById("xtouchpos").innerHTML = "xtouch-pos = " + touch.pageX;
-    document.getElementById("ytouchpos").innerHTML = "ytouch-pos = " + touch.pageY;
-  }
-}, false); 
+  obj.addEventListener();
 
 	then = now;
 };
