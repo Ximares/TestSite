@@ -12,7 +12,7 @@
   
   <body style="background-color:#c64141; text-align:center">
     <h1>Ximares Testing Site</h1>
-	  <p>Ver 0.2, last updated 3rd April 2017</p>
+	  <p>Ver 0.3, last updated 3rd April 2017</p>
     <h2> ~ Coin Collect Game ~ </h2>
     <h3> Arrowkeys, WASD, or touch for moving character </h3>
     
@@ -192,8 +192,8 @@ canvas.addEventListener('touchmove', function(event) {
     canvas.style.top = touch.pageY + 'px';
     document.getElementById("xtouchpos").innerHTML = "xtouch-pos = " + touch.pageX;
     document.getElementById("ytouchpos").innerHTML = "ytouch-pos = " + touch.pageY;
-    chara.x = touch.pageX;
-    chara.y = touch.pageY -200;
+    chara.x = touch.pageX - 170;
+    chara.y = touch.pageY -470;
   }
 }, false);
   
