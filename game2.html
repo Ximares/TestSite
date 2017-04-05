@@ -12,7 +12,144 @@
   <body style="background-color:#c64141; text-align:center">
     <h1>Ximares Game Page</h1>
 	  <p>Ver 0.1, last updated 5th April 2017</p>
+    Click <a href="http://ximares.github.io/">here</a> to go back to the main page
+    <br>
+    <h2> ~ Rhythm Game ~ </h2>
+    Still working on this
+    <br>
   </body>
   
   <script>
+    // Disable scrolling with arrowkeys
+    window.addEventListener("keydown", function(e) {
+    // Space and arrow keys
+    if([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
+      e.preventDefault();
+      }
+    }, false);
+    
+    
+    // Image-List
+    // Images here
+    
+    
+    // Song-list
+    // Songs here
+    
+    
+    // Creating the canvas
+    var canvas = document.createElement("canvas");
+    var ctx = canvas.getContext("2d");
+    canvas.width = 1000;
+    canvas.height = 500;
+    document.body.appendChild(canvas);
+    
+    
+    // Experimental anti-scroll   
+    canvas.addEventListener('touchstart', this.touchstart);
+    canvas.addEventListener('touchmove', this.touchmove);
+   
+    function touchstart(e) {
+      e.preventDefault()
+    } 
+  
+    function touchstart(e) {
+      e.preventDefault()
+    }
+    
+    
+    // Touch-initialization
+    var obj = document.getElementById('touch');
+    canvas.addEventListener('touchmove', function(event) {
+    // If there's exactly one finger inside this element
+    if (event.targetTouches.length == 1) {
+    var touch = event.targetTouches[0];
+    // Place element where finger is
+    canvas.style.left = touch.pageX + 'px';
+    canvas.style.top = touch.pageY + 'px';
+    document.getElementById("xtouchpos").innerHTML = "xtouch-pos = " + touch.pageX;
+    document.getElementById("ytouchpos").innerHTML = "ytouch-pos = " + touch.pageY;
+    VARIABLETEST1 = touch.pageX + 42;
+    VARIABLETEST2 = touch.pageY -42;
+    }
+    }, false);
+    
+    
+    // Button A image
+    var buttonReady = false;
+    var buttonImage = new Image();
+    buttonImage.onload = function () {
+	  buttonReady = true;
+    };
+    
+    // Button B image
+    var buttonReady = false;
+    var buttonImage = new Image();
+    buttonImage.onload = function () {
+	  buttonReady = true;
+    };
+    
+    
+    // Handle keyboard controls
+    var keysDown = {};
+    addEventListener("keydown", function (e) {
+	  keysDown[e.keyCode] = true;
+    }, false);
+    addEventListener("keyup", function (e) {
+	  delete keysDown[e.keyCode];
+    }, false);
+    
+    
+    // Draw everything
+    var render = function () {
+	  if (bgReady) {
+		ctx.drawImage(bgImage, 0, 0);
+	  }
+	  if (charaReady) {
+		ctx.drawImage(charaImage, chara.x, chara.y);
+	  }
+	  if (coinReady) {
+		ctx.drawImage(coinImage, coin.x, coin.y);
+	  }
+      
+      
+	  // Score
+	  ctx.fillStyle = "rgb(0, 0, 256)";
+	  ctx.font = "20px Helvetica";
+	  ctx.textAlign = "left";
+	  ctx.textBaseline = "top";
+	  ctx.fillText("Collected: " + coinsCaught, 32, 32);
+      
+    // The main game loop
+    var main = function () {
+	  var now = Date.now();
+	  var delta = now - then;
+	  update(delta / 1000);
+    if (chara.x < 5) {
+    chara.x = 10;
+    }
+    if (chara.x > 473) {
+    chara.x = 468;
+    }
+    if (chara.y < 0) {
+    chara.y = 5;
+    }
+    if (chara.y > 445) {
+    chara.y = 440;
+    }
+  	render();
+    document.getElementById("xpos").innerHTML = "x-pos = " + chara.x;
+    document.getElementById("ypos").innerHTML = "y-pos = " + chara.y;
+    //document.getElementById("xtouchpos").innerHTML = "xtouch-pos = " + chara.x;
+    //document.getElementById("ytouchpos").innerHTML = "ytouch-pos = " + chara.y;
+    //obj.addEventListener();
+	  then = now;
+    };
+    
+    // Game start!
+    reset();
+    var then = Date.now();
+    setInterval(main, 1); // Execute as fast as possible
+    
+    
   </script>
