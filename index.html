@@ -1,381 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>Ximares Test Site</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
-    <meta name="viewport" content="width=device-width">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-  </head>
-  
-  
-  <body style="background-color:#c64141; text-align:center">
-    <h1>Ximares Testing Site</h1>
-	  <p>Ver 0.6, last updated 27th Jan 2018</p>
-	  <p>Current project <a href="https://ximares.github.io/XimaresRPG.html">here</a></p>
-    Second game ver 0.1 <a href="https://ximares.github.io/XimaresGameTest.html">here</a>
-    Second game ver 0.2 <a href="https://ximares.github.io/XimaresGameTest2.html">here</a>
-    Second game ver 0.3 <a href="https://ximares.github.io/XimaresGameTest3.html">here</a>
-    <h2> ~ Coin Collect Game ~ </h2>
-    <h3> Arrowkeys, WASD, or touch for moving character </h3>
-    
-    <div id="xpos">
-    x-pos: 
-    </div>
-    
-    <div id="ypos">
-    y-pos: 
-    </div>
 
-    
-<!--Initializing touch events-->
-    <div
-  ontouchstart="touchStart(event);"
-  ontouchmove="touchMove(event);"
-  ontouchend="touchEnd(event);"
-  ontouchcancel="touchCancel(event);"
-  ontouchforcechange="touchForceChange(event);"
-></div>
-    
-    
-    <div id="touch">
-</div>
-    
-    <div id="xtouchpos">
-    xtouch-pos: 
-    </div>
+<head>
+  <meta charset="utf-8">
+  <title>Ximares Test Site</title>
+  <link rel="stylesheet" href="style.css">
+  <script type='text/javascript' src='script.js'></script>
+  <meta name="viewport" content="width=device-width">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+</head>
 
-    <div id="ytouchpos">
-    ytouch-pos: 
-    </div>
-    
+<body style="background-color:#c64141; text-align:center">
+  <h1>Ximares Testing Site</h1>
+  <p>Ver 0.8, last updated 13th February 2023</p>
+  <p>Current project <a href="https://ximares.github.io/XimaresRPG.html">here</a></p>
+  Second game ver 0.1 <a href="https://ximares.github.io/XimaresGameTest.html">here</a>
+  Second game ver 0.2 <a href="https://ximares.github.io/XimaresGameTest2.html">here</a>
+  Second game ver 0.3 <a href="https://ximares.github.io/XimaresGameTest3.html">here</a>
+  <h2> ~ Coin Collect Game ~ </h2>
+  <h3> Arrowkeys, WASD, or touch for moving character </h3>
 
-    <br>
- 
+  <div id="xpos">
+    x-pos:
+  </div>
 
-<!--Giving audio different IDs-->
-    <audio id="song1">
-  <source src="https://github.com/Ximares/ximares.github.io/raw/master/audio/ximares_ost_game.mp3" type="audio/mpeg">
-  Your browser does not support the audio element.
-</audio>
-    
-    <audio id="song2">
-  <source src="https://github.com/Ximares/ximares.github.io/raw/master/audio/ximares_ost_game2.mp3" type="audio/mpeg">
-  Your browser does not support the audio element.
-</audio>
-    
-    <audio id="song3">
-  <source src="https://github.com/Ximares/ximares.github.io/raw/master/audio/ximares_ost_game3.mp3" type="audio/mpeg">
-  Your browser does not support the audio element.
-</audio>
-    
-    <audio id="song4">
-  <source src="https://github.com/Ximares/ximares.github.io/raw/master/audio/ximares_ost_game4.mp3" type="audio/mpeg">
-  Your browser does not support the audio element.
-</audio>
+  <div id="ypos">
+    y-pos:
+  </div>
 
-<audio id="coinsound">
-  <source src="https://github.com/Ximares/ximares.github.io/raw/master/audio/ximares_sfx_coin2.mp3" type="audio/mpeg">
-  Your browser does not support the audio element.
-</audio>
+  <!--Initializing touch events-->
+  <div ontouchstart="touchStart(event);" ontouchmove="touchMove(event);" ontouchend="touchEnd(event);"
+    ontouchcancel="touchCancel(event);" ontouchforcechange="touchForceChange(event);"></div>
 
-    
-    
-    
+  <div id="touch">
+  </div>
 
-<script>
-//Disable scrolling with arrowkeys
-    window.addEventListener("keydown", function(e) {
-    //space and arrow keys
-    if([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
-        e.preventDefault();
-    }
-}, false);
- 
-   
-  
-//BACKGROUNDLIST
-var imgArray = new Array();
-  
-imgArray[0] = new Image();
-imgArray[0].src = 'https://github.com/Ximares/ximares.github.io/raw/master/visual/playground.png';
-  
-imgArray[1] = new Image();
-imgArray[1].src = 'https://github.com/Ximares/ximares.github.io/raw/master/visual/playground_green.png';
-    
-imgArray[2] = new Image();
-imgArray[2].src = 'https://github.com/Ximares/ximares.github.io/raw/master/visual/playground_yellow.png';
-    
-imgArray[3] = new Image();
-imgArray[3].src = 'https://github.com/Ximares/ximares.github.io/raw/master/visual/playground_orange.png';
-    
-imgArray[4] = new Image();
-imgArray[4].src = 'https://github.com/Ximares/ximares.github.io/raw/master/visual/playground_red.png';
-    
-imgArray[5] = new Image();
-imgArray[5].src = 'https://github.com/Ximares/ximares.github.io/raw/master/visual/playground_secret.png';
-    
-  
-//SONGLIST
-    var song1 = document.getElementById("song1"); 
-function playSong1() { 
-    song1.play(); 
-} 
-function pauseSong1() { 
-    song1.pause(); 
-} 
-    
-    var song2 = document.getElementById("song2"); 
-function playSong2() { 
-    song2.play(); 
-} 
-function pauseSong2() { 
-    song2.pause(); 
-} 
-    
-    var song3 = document.getElementById("song3"); 
-function playSong3() { 
-    song3.play(); 
-} 
-function pauseSong3() { 
-    song3.pause(); 
-} 
-	
-    var song4 = document.getElementById("song4"); 
-function playSong4() { 
-    song4.play(); 
-} 
-function pauseSong4() { 
-    song4.pause(); 
-} 
-    
-    
-var soundtest = document.getElementById("coinsound");
-    function coinSound() {
-      soundtest.play();
-    }
-    
-  
-// Create the canvas
-var canvas = document.createElement("canvas");
-var ctx = canvas.getContext("2d");
-canvas.width = 512;
-canvas.height = 480;
-document.body.appendChild(canvas);
-  
-// Background image
-var bgReady = false;
-var bgImage = new Image();
-bgImage.onload = function () {
-	bgReady = true;
-};
-    
-  
-//EXPERIMENTAL ANTI-SCROLL    
-canvas.addEventListener('touchstart', this.touchstart);
-canvas.addEventListener('touchmove', this.touchmove);
-   
-  function touchstart(e) {
-    e.preventDefault()
-} 
-  
-    function touchstart(e) {
-    e.preventDefault()
-}
+  <div id="xtouchpos">
+    xtouch-pos:
+  </div>
 
-  
-//INITIALIZING TOUCH
-var obj = document.getElementById('touch');
-canvas.addEventListener('touchmove', function(event) {
-  // If there's exactly one finger inside this element
-  if (event.targetTouches.length == 1) {
-    var touch = event.targetTouches[0];
-    // Place element where the finger is
-    canvas.style.left = touch.pageX + 'px';
-    canvas.style.top = touch.pageY + 'px';
-    document.getElementById("xtouchpos").innerHTML = "xtouch-pos = " + touch.pageX;
-    document.getElementById("ytouchpos").innerHTML = "ytouch-pos = " + touch.pageY;
-    chara.x = touch.pageX - 140;
-    chara.y = touch.pageY -420;
-  }
-}, false);
-  
-  
-bgImage.src = "https://github.com/Ximares/ximares.github.io/raw/master/visual/playground.png";
-// chara image
-var charaReady = false;
-var charaImage = new Image();
-charaImage.onload = function () {
-	charaReady = true;
-};
-	
-charaImage.src = "https://github.com/Ximares/ximares.github.io/raw/master/visual/lenny.png";
-  
-// coin image
-var coinReady = false;
-var coinImage = new Image();
-coinImage.onload = function () {
-	coinReady = true;
-};
-	
-coinImage.src = "https://github.com/Ximares/ximares.github.io/raw/master/visual/coin.png";
-  
-// Game objects
-var chara = {
-	speed: 300 // movement in pixels per second
-};
-  
-var coin = {};
-var coinsCaught = 0;
-  
-// Handle keyboard controls
-var keysDown = {};
-addEventListener("keydown", function (e) {
-	keysDown[e.keyCode] = true;
-}, false);
-addEventListener("keyup", function (e) {
-	delete keysDown[e.keyCode];
-}, false);
-    
-      
-// Reset the game when the player catches a coin
-var reset = function () {
-  chara.x = canvas.width / 2;
-	chara.y = canvas.height / 2;
-	// Throw the coin somewhere on the screen randomly
-	coin.x = 0 + (Math.random() * (canvas.width - 120));
-	coin.y = 0 + (Math.random() * (canvas.height - 120));
-};
-    
-// Update game objects
-var update = function (modifier) {
-	if (38 in keysDown || 87 in keysDown) { // Player holding up
-		chara.y -= chara.speed * modifier;
-	}
-	if (40 in keysDown || 83 in keysDown) { // Player holding down
-		chara.y += chara.speed * modifier;
-	}
-	if (37 in keysDown || 65 in keysDown) { // Player holding left
-		chara.x -= chara.speed * modifier;
-	}
-	if (39 in keysDown || 68 in keysDown) { // Player holding right
-		chara.x += chara.speed * modifier;
-	}
-  
-  
-  //TOUCH STUFF
-  var update = function (modifier) {
-  var xtouchpos = event.touches[0].pageX;
-  var ytouchpos = event.touches[0].pageY;
-  }
-	// Are they touching?
-	if (
-		chara.x <= (coin.x + 32)
-		&& coin.x <= (chara.x + 32)
-		&& chara.y <= (coin.y + 32)
-		&& coin.y <= (chara.y + 32)
-	) {
-		++coinsCaught;
-    //PLAY COIN SOUND
-    coinSound();
-    coin.x = 0 + (Math.random() * (canvas.width - 60));
-	  coin.y = 0 + (Math.random() * (canvas.height - 60));
-	}
-};
-// Draw everything
-var render = function () {
-	if (bgReady) {
-		ctx.drawImage(bgImage, 0, 0);
-	}
-	if (charaReady) {
-		ctx.drawImage(charaImage, chara.x, chara.y);
-	}
-	if (coinReady) {
-		ctx.drawImage(coinImage, coin.x, coin.y);
-	}
-	// Score
-	ctx.fillStyle = "rgb(0, 0, 256)";
-	ctx.font = "20px Helvetica";
-	ctx.textAlign = "left";
-	ctx.textBaseline = "top";
-	ctx.fillText("Collected: " + coinsCaught, 32, 32);
-  if (coinsCaught == 1) {
-    playSong1();
-  }
-  if (coinsCaught == 20) {
-    ctx.fillText("20 coins good job!", 32, 64);
-    pauseSong1();
-    playSong2();
-  }
-  if (coinsCaught == 50) {
-    ctx.fillText("50 coins good good! >:3/", 32, 64);
-    pauseSong2();
-    playSong3();
-  }
-  if (coinsCaught >= 100) {
-    ctx.fillText("100 coins!! you finished :D", 32, 64);
-    pauseSong3();
-    playSong4();
-  }
-  
-      if(coinsCaught >= 1){
-      bgImage = imgArray[1];
-    }
-  
-       if(coinsCaught >= 20){
-     bgImage = imgArray[2]; 
-    }
-  
-         if(coinsCaught >= 50){
-     bgImage = imgArray[3];
-    }
-  
-          if(coinsCaught >= 100){
-     bgImage = imgArray[4]; 
-    }
-  
-            if(coinsCaught >= 200){
-     bgImage = imgArray[5]; 
-    }
-  
-};
-  
-  
-// The main game loop
-var main = function () {
-	var now = Date.now();
-	var delta = now - then;
-	update(delta / 1000);
-  if (chara.x < 5) {
-    chara.x = 10;
-  }
-  if (chara.x > 473) {
-    chara.x = 468;
-  }
-  if (chara.y < 0) {
-    chara.y = 5;
-  }
-  if (chara.y > 445) {
-    chara.y = 440;
-  }
-  	render();
-  document.getElementById("xpos").innerHTML = "x-pos = " + chara.x;
-  document.getElementById("ypos").innerHTML = "y-pos = " + chara.y;
-  //document.getElementById("xtouchpos").innerHTML = "xtouch-pos = " + chara.x;
-  //document.getElementById("ytouchpos").innerHTML = "ytouch-pos = " + chara.y;
-  //obj.addEventListener();
-	then = now;
-};
-    
-// Game start!
-reset();
-var then = Date.now();
-setInterval(main, 1); // Execute as fast as possible
-  </script> 
-    <br>
-    <br>
-    
-  </body>
-  
+  <div id="ytouchpos">
+    ytouch-pos:
+  </div>
+
+  <br>
+
+  <!--Giving audio different IDs-->
+  <audio id="song1">
+    <source src="https://github.com/Ximares/ximares.github.io/raw/master/audio/ximares_ost_game.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <audio id="song2">
+    <source src="https://github.com/Ximares/ximares.github.io/raw/master/audio/ximares_ost_game2.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <audio id="song3">
+    <source src="https://github.com/Ximares/ximares.github.io/raw/master/audio/ximares_ost_game3.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <audio id="song4">
+    <source src="https://github.com/Ximares/ximares.github.io/raw/master/audio/ximares_ost_game4.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <audio id="coinsound">
+    <source src="https://github.com/Ximares/ximares.github.io/raw/master/audio/ximares_sfx_coin2.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <br>
+  <br>
+
+<script src="script.js">
+</script>
+
+</body>
+
 </html>
