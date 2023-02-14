@@ -105,8 +105,8 @@ canvas.addEventListener('touchmove', function (event) {
     // Place element where the finger is
     canvas.style.left = touch.pageX + 'px';
     canvas.style.top = touch.pageY + 'px';
-    document.getElementById("xtouchpos").innerHTML = "xtouch-pos = " + touch.pageX;
-    document.getElementById("ytouchpos").innerHTML = "ytouch-pos = " + touch.pageY;
+    document.getElementById("xtouchpos").innerHTML = "xtouch-pos = " + Math.floor(touch.pageX);
+    document.getElementById("ytouchpos").innerHTML = "ytouch-pos = " + Math.floor(touch.pageY);
     character.x = Math.floor(touch.pageX - 140);
     character.y = Math.floor(touch.pageY - 420);
   }
